@@ -1,0 +1,1613 @@
+{
+	"info": {
+		"_postman_id": "e9bb3976-1597-47cc-a684-69e37c170a72",
+		"name": "MB:Amplify-Checkout automation practice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22648211",
+		"_collection_link": "https://warped-trinity-507216.postman.co/workspace/Amplify~e805bf0a-4eae-4321-81ee-af8e5b968a87/collection/22648211-e9bb3976-1597-47cc-a684-69e37c170a72?action=share&creator=22648211&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//pm.environment.clear();\r",
+							"//console.clear();\r",
+							"\r",
+							"var moment = require('moment');\r",
+							"\r",
+							"var Org_Name =(Math.random() + 1).toString(36).substring(7)+\"\"+  moment().format((\"DDMMYY\"))+Math. floor(100 + Math. random() * 90000)+\"_Xtivia_QA\";\r",
+							"pm.environment.set(\"OrgName\", Org_Name);\r",
+							"console.log (\"OrgName- \"+Org_Name);\r",
+							"\r",
+							"var amplifyUUID =(Math. floor(777 + Math. random() * 99000000)+\"-\"+Math. floor(777 + Math. random() * 990000)+\"-\"+Math. floor(777 + Math. random() * 990));\r",
+							"pm.environment.set(\"amplifyUUID\", amplifyUUID);\r",
+							"console.log (\"amplifyUUID- \"+amplifyUUID);\r",
+							"\r",
+							"var UseramplifyUUID =(Math. floor(777 + Math. random() * 99000000)+\"-\"+Math. floor(777 + Math. random() * 990000)+\"-\"+Math. floor(777 + Math. random() * 990));\r",
+							"pm.environment.set(\"UseramplifyUUID\", UseramplifyUUID);\r",
+							"console.log (\"UseramplifyUUID- \"+UseramplifyUUID);\r",
+							"//pm.environment.set(\"randomEmail\", {{$randomEmail}});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"//console.log (\"Church_ID- \"+Church_ID)\r",
+							"\r",
+							"let  i=Math.floor((Math.random() * 13) + 1);\r",
+							"\r",
+							"let CityStateZip = [\r",
+							"    ['Jber', 'AK','99505'],\r",
+							"    ['Alton', 'AL','35015'],\r",
+							"    ['Aurora', 'CO','80013'],\r",
+							"    ['Greenwood', 'FL','32443'],\r",
+							"    ['Fort Hall', 'ID','83203'],\r",
+							"    ['Alden','IL','60001'],\r",
+							"    ['Baldwin City','KS','66006'],\r",
+							"    ['Fort Hall', 'ID','83203'],\r",
+							"    ['Fort Campbell','KY','42223'],\r",
+							"    ['Metairie','LA','70001'],\r",
+							"    ['Afton','MN','55002'],\r",
+							"   \r",
+							"    ['Abbeville','MS','38601'],\r",
+							"    ['Absarokee','MT','59001'],\r",
+							"];\r",
+							"\r",
+							"pm.environment.set(\"City\",CityStateZip[i][0]);\r",
+							"pm.environment.set(\"stateIsoCode\",CityStateZip[i][1]);\r",
+							"pm.environment.set(\"postal_code\",CityStateZip[i][2]);\r",
+							"\r",
+							"console.log(\"City \",CityStateZip[i][0]);\r",
+							"console.log(\"stateIsoCode \",CityStateZip[i][1]);\r",
+							"console.log(\"postal_code \",CityStateZip[i][2]);\r",
+							"\r",
+							"var denomination=\r",
+							"[\"Christian\",\r",
+							"\"Evangelical Protestant\",\r",
+							"\"Baptist Family (Evangelical Trad.)\",\r",
+							"\"Southern Baptist Convention\",\r",
+							"\"Independent Baptist (Evangelical Trad.)\",\r",
+							"\"Missionary Baptist (Evangelical Trad.)\",\r",
+							"\"Conservative Baptist Association of America\",\r",
+							"\"Free Will Baptist\",\r",
+							"\"General Association of Regular Baptist Churches\",\r",
+							"\"Other Baptist (Evangelical Trad.)\",\r",
+							"\"Methodist Family (Evangelical Trad.)\",\r",
+							"\"Nondenominational Family (Evangelical Trad.)\",\r",
+							"\"Nondenominational evangelical\",\r",
+							"\"Nondenominational fundamentalist\",\r",
+							"\"Nondenominational charismatic\",\r",
+							"\"Nondenominational Christian (Evangelical Trad.)\",\r",
+							"\"Interdenominational (Evangelical Trad.)\",\r",
+							"\"Community Church (Evangelical Trad.)\",\r",
+							"\"Other Nondenominational (Evangelical Trad.)\",\r",
+							"\"Lutheran Family (Evangelical Trad.)\",\r",
+							"\"Lutheran Church-Missouri Synod\",\r",
+							"\"Wisconsin Evangelical Lutheran Synod\",\r",
+							"\"Other Lutheran (Evangelical Trad.)\",\r",
+							"\"Presbyterian Family (Evangelical Trad.)\",\r",
+							"\"Presbyterian Church in America\",\r",
+							"\"Other Presbyterian (Evangelical Trad.)\",\r",
+							"\"Pentecostal Family (Evangelical Trad.)\",\r",
+							"\"Assemblies of God\",\r",
+							"\"Church of God (Cleveland, Tennessee)\",\r",
+							"\"Foursquare Church\",\r",
+							"\"Pentecostal Church of God\",\r",
+							"\"Pentecostal Holiness Church\",\r",
+							"\"Calvary Chapel\",\r",
+							"\"Apostolic Pentecostal (Evangelical Trad.)\",\r",
+							"\"Nondenominational Pentecostal (Evangelical Trad.)\",\r",
+							"\"Church of God of the Apostolic Faith\",\r",
+							"\"Other Pentecostal (Evangelical Trad.)\",\r",
+							"\"Episcopalian/Anglican Family (Evangelical Trad.)\",\r",
+							"\"Restorationist Family (Evangelical Trad.)\",\r",
+							"\"Churches of Christ\",\r",
+							"\"Christian Churches and Churches of Christ\",\r",
+							"\"Other Restorationist (Evangelical Trad.)\",\r",
+							"\"Congregationalist Family (Evangelical Trad.)\",\r",
+							"\"Conservative Congregational Christian Conference\",\r",
+							"\"Other Congregationalist (Evangelical Trad.)\",\r",
+							"\"Holiness Family (Evangelical Trad.)\",\r",
+							"\"Church of the Nazarene\",\r",
+							"\"Wesleyan Church\",\r",
+							"\"Free Methodist Church\",\r",
+							"\"Christian and Missionary Alliance\",\r",
+							"\"Church of God (Anderson, Indiana)\",\r",
+							"\"Other Holiness (Evangelical Trad.)\",\r",
+							"\"Reformed Family (Evangelical Trad.)\",\r",
+							"\"Christian Reformed Church\",\r",
+							"\"Other Reformed (Evangelical Trad.)\",\r",
+							"\"Adventist Family (Evangelical Trad.)\",\r",
+							"\"Seventh-day Adventist\",\r",
+							"\"Other Adventist (Evangelical Trad.)\",\r",
+							"\"Anabaptist Family (Evangelical Trad.)\",\r",
+							"\"Pietist Family (Evangelical Trad.)\",\r",
+							"\"Other evangelical/fundamentalist family (Evangelical Trad.)\",\r",
+							"\"Nonspecific Protestant Family (Evangelical Trad.)\",\r",
+							"\"Mainline Protestant\",\r",
+							"\"Baptist Family (Mainline Trad.)\",\r",
+							"\"American Baptist Churches USA\",\r",
+							"\"Other Baptist (Mainline Trad.)\",\r",
+							"\"Methodist Family (Mainline Trad.)\",\r",
+							"\"United Methodist Church\",\r",
+							"\"Other Methodist (Mainline Trad.)\",\r",
+							"\"Nondenominational Family (Mainline Trad.)\",\r",
+							"\"Interdenominational (Mainline Trad.)\",\r",
+							"\"Other Nondenominational (Mainline Trad.)\",\r",
+							"\"Lutheran Family (Mainline Trad.)\",\r",
+							"\"Evangelical Lutheran Church in America (ELCA)\",\r",
+							"\"Other Lutheran (Mainline Trad.)\",\r",
+							"\"Presbyterian Family (Mainline Trad.)\",\r",
+							"\"Presbyterian Church (USA)\",\r",
+							"\"Other Presbyterian (Mainline Trad.)\",\r",
+							"\"Episcopalian/Anglican Family (Mainline Trad.)\",\r",
+							"\"Episcopal Church\",\r",
+							"\"Anglican Church\",\r",
+							"\"Other Episcopalian/Anglican (Mainline Trad.)\",\r",
+							"\"Restorationist Family (Mainline Trad.)\",\r",
+							"\"Disciples of Christ\",\r",
+							"\"Other Restorationist (Mainline Trad.)\",\r",
+							"\"Congregationalist Family (Mainline Trad.)\",\r",
+							"\"United Church of Christ\",\r",
+							"\"Other Congregationalist (Mainline Trad.)\",\r",
+							"\"Reformed Family (Mainline Trad.)\",\r",
+							"\"Reformed Church in America\",\r",
+							"\"Other Reformed (Mainline Trad.)\",\r",
+							"\"Anabaptist Family (Mainline Trad.)\",\r",
+							"\"Friends Family (Mainline Trad.)\",\r",
+							"\"Nonspecific Protestant Family (Mainline Trad.)\",\r",
+							"\"Historically Black Protestant\",\r",
+							"\"Baptist Family (Historically Black Protestant Trad.)\",\r",
+							"\"National Baptist Convention\",\r",
+							"\"Progressive Baptist Convention\",\r",
+							"\"Independent Baptist (Historically Black Protestant Trad.)\",\r",
+							"\"Missionary Baptist (Historically Black Protestant Trad.)\",\r",
+							"\"Other Baptist (Historically Black Protestant Trad.)\",\r",
+							"\"Methodist Family (Historically Black Protestant Trad.)\",\r",
+							"\"African Methodist Episcopal Church\",\r",
+							"\"African Methodist Episcopal Zion Church\",\r",
+							"\"Christian Methodist Episcopal Church\",\r",
+							"\"Other Methodist (Historically Black Protestant Trad.)\",\r",
+							"\"Pentecostal Family (Historically Black Protestant Trad.)\",\r",
+							"\"Church of God in Christ\",\r",
+							"\"Apostolic Pentecostal (Historically Black Protestant Trad.)\",\r",
+							"\"United Pentecostal Church International\",\r",
+							"\"Other Pentecostal (Historically Black Protestant Trad.)\",\r",
+							"\"Holiness Family (Historically Black Protestant Trad.)\",\r",
+							"\"Nondenominational Family (Historically Black Protestant Trad.)\",\r",
+							"\"Nonspecific Protestant Family (Historically Black Protestant Trad.)\",\r",
+							"\"Catholic\",\r",
+							"\"Mormon\",\r",
+							"\"Church of Jesus Christ of Latter-day Saints\",\r",
+							"\"Other Mormon\",\r",
+							"\"Orthodox Christian\",\r",
+							"\"Greek Orthodox\",\r",
+							"\"Russian Orthodox\",\r",
+							"\"Orthodox Church in America\",\r",
+							"\"Other Orthodox Christian\",\r",
+							"\"Jehovah's Witness\",\r",
+							"\"Other Christian\",\r",
+							"\"Metaphysical Family\",\r",
+							"\"Spiritualist\",\r",
+							"\"Unity Church\",\r",
+							"'Other Metaphysical Christian (\"Other Christian\" Trad.)',\r",
+							"'Others in the \"Other Christian\" Tradition',\r",
+							"\"Non-Christian Faiths\",\r",
+							"\"Jewish\",\r",
+							"\"Muslim\",\r",
+							"\"Buddhist\",\r",
+							"\"Hindu\",\r",
+							"\"Other World Religions\",\r",
+							"\"Other Faiths\",\r",
+							"'Unitarians and other liberal faiths in the \"Other Faiths\" Tradition',\r",
+							"\"Unitarian\",\r",
+							"\"Humanist\",\r",
+							"\"Deist\",\r",
+							"\"Spiritual but not religious\",\r",
+							"'Eclectic, a bit of everything, \"I have my own beliefs',\r",
+							"'Other in the \"Unitarian and other liberal faiths\" family',\r",
+							"\"New Age\",\r",
+							"\"Pagan or Wiccan\",\r",
+							"\"Other in the New Age family\",\r",
+							"\"Native American Religions\",\r",
+							"'Unaffiliated (religious \"nones\")',\r",
+							"\"Atheist\",\r",
+							"\"Agnostic\",\r",
+							"\"Nothing in particular\",\r",
+							"\"Nothing in particular (religion not important)\",\r",
+							"\"Nothing in particular (religion important)\",\r",
+							"\"Don't know\"\r",
+							"]\r",
+							"\r",
+							"let denominations = denomination[Math.floor(Math.random() * denomination.length)];\r",
+							"console.log(\"denominations - \" +denominations);\r",
+							"pm.environment.set(\"denominations\", denominations);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.environment.set(\"accountId\", jsonData.orgEUID);\r",
+							"pm.environment.set(\"contactId\", jsonData.contactEUID);\r",
+							"\r",
+							"console.log(\"accountId__ \"+jsonData.orgEUID)\r",
+							"console.log(\"contactId__ \"+jsonData.contactEUID)\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"New Customer created 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"organization\": {\r\n        \"name\": \"{{OrgName}}\",\r\n        \"amplifyUUID\": \"{{amplifyUUID}}\",\r\n        \"address\": {\r\n            \"line1\": \"{{$randomStreetAddress}}\",\r\n            \"line2\": \"{{$randomStreetName}}\",\r\n            \"city\": \"{{City}}\",\r\n            \"state\": \"{{stateIsoCode}}\",            \r\n            \"postal_code\": \"{{postal_code}}\",\r\n            \"country\": \"US\"     \r\n              \r\n        },\r\n        \"totalWeeklyAttendance\": 100\r\n        \r\n    },\r\n    \r\n\"user\": \r\n    {\r\n\r\n        \"amplifyUUID\": \"{{UseramplifyUUID}}\",\r\n        \"firstName\": \"{{$randomFirstName}}\",\r\n        \"lastName\": \"{{$randomLastName}}\",\r\n        \"email\": \"{{$randomEmail}}\",\r\n        \"phone\": \"{{$randomPhoneNumber}}\"\r\n    }\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/customers",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"customers"
+					],
+					"query": [
+						{
+							"key": "accountId",
+							"value": "0017b000012msyFAAQ",
+							"disabled": true
+						},
+						{
+							"key": "contactId",
+							"value": "0037b00000uu7iHAAQ",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"To Check expected org name\", function() \r",
+							"{\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.expect(jsonData.organization.name).not.eql('{{accountId}}'); \r",
+							"})\r",
+							"\r",
+							"pm.test(\"Get Customer 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BaseURL}}/customers?orgEUID={{accountId}}&contactEUID={{contactId}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"customers"
+					],
+					"query": [
+						{
+							"key": "orgEUID",
+							"value": "{{accountId}}"
+						},
+						{
+							"key": "contactEUID",
+							"value": "{{contactId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Update success should true\",function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.success).to.eql(true);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Updated New customer 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var UseramplifyUUID =(Math. floor(777 + Math. random() * 99000000)+\"-\"+Math. floor(777 + Math. random() * 990000)+\"-\"+Math. floor(777 + Math. random() * 990));\r",
+							"pm.environment.set(\"UseramplifyUUID\", UseramplifyUUID);\r",
+							"console.log (\"UseramplifyUUID- \"+UseramplifyUUID);\r",
+							"\r",
+							"var moment = require('moment');\r",
+							"\r",
+							"var Org_Name =(Math.random() + 1).toString(36).substring(7)+\"\"+  moment().format((\"DDMMYY\"))+Math. floor(100 + Math. random() * 90000)+\"_Xtivia_QA\";\r",
+							"pm.environment.set(\"OrgName\", Org_Name);\r",
+							"console.log (\"OrgName- \"+Org_Name);\r",
+							"\r",
+							"var randomEmail,randomFirstName,randomLastName,randomPhoneNumber,randomStreetAddress,randomStreetName;\r",
+							"\r",
+							"pm.environment.set(\"randomEmail\",pm.variables.replaceIn('{{$randomEmail}}'));\r",
+							"pm.environment.set(\"randomFirstName\",pm.variables.replaceIn('{{$randomFirstName}}'));\r",
+							"pm.environment.set(\"randomLastName\",pm.variables.replaceIn('{{$randomLastName}}'));\r",
+							"pm.environment.set(\"randomPhoneNumber\",pm.variables.replaceIn('{{$randomPhoneNumber}}'));\r",
+							"pm.environment.set(\"randomStreetAddress\",pm.variables.replaceIn('{{$randomStreetAddress}}'));\r",
+							"pm.environment.set(\"randomStreetName\",pm.variables.replaceIn('{{$randomStreetName}}'));\r",
+							"\r",
+							"\r",
+							"\r",
+							"/*\r",
+							"let  i=Math.floor((Math.random() * 13) + 1);\r",
+							"\r",
+							"let CityStateZip = [\r",
+							"    ['Jber', 'AK','99505'],\r",
+							"    ['Alton', 'AL','35015'],\r",
+							"    ['Aurora', 'CO','80013'],\r",
+							"    ['Greenwood', 'FL','32443'],\r",
+							"    ['Fort Hall', 'ID','83203'],\r",
+							"    ['Alden','IL','60001'],\r",
+							"    ['Baldwin City','KS','66006'],\r",
+							"    ['Fort Hall', 'ID','83203'],\r",
+							"    ['Fort Campbell','KY','42223'],\r",
+							"    ['Metairie','LA','70001'],\r",
+							"    ['Afton','MN','55002'],\r",
+							"    ['Allenton','MO','63001'],\r",
+							"    ['Abbeville','MS','38601'],\r",
+							"    ['Absarokee','MT','59001'],\r",
+							"];\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.environment.set(\"City\", CityStateZip[i][0]);\r",
+							"pm.environment.set(\"stateIsoCode\", CityStateZip[i][1]);\r",
+							"pm.environment.set(\"postal_code\", CityStateZip[i][2]);\r",
+							"\r",
+							"console.log(\"City \",CityStateZip[i][0]);\r",
+							"console.log(\"stateIsoCode \",CityStateZip[i][1]);\r",
+							"console.log(\"postal_code \",+CityStateZip[i][2]);\r",
+							"*/\r",
+							"\r",
+							"var denomination=\r",
+							"[\"Christian\",\r",
+							"\"Evangelical Protestant\",\r",
+							"\"Baptist Family (Evangelical Trad.)\",\r",
+							"\"Southern Baptist Convention\",\r",
+							"\"Independent Baptist (Evangelical Trad.)\",\r",
+							"\"Missionary Baptist (Evangelical Trad.)\",\r",
+							"\"Conservative Baptist Association of America\",\r",
+							"\"Free Will Baptist\",\r",
+							"\"General Association of Regular Baptist Churches\",\r",
+							"\"Other Baptist (Evangelical Trad.)\",\r",
+							"\"Methodist Family (Evangelical Trad.)\",\r",
+							"\"Nondenominational Family (Evangelical Trad.)\",\r",
+							"\"Nondenominational evangelical\",\r",
+							"\"Nondenominational fundamentalist\",\r",
+							"\"Nondenominational charismatic\",\r",
+							"\"Nondenominational Christian (Evangelical Trad.)\",\r",
+							"\"Interdenominational (Evangelical Trad.)\",\r",
+							"\"Community Church (Evangelical Trad.)\",\r",
+							"\"Other Nondenominational (Evangelical Trad.)\",\r",
+							"\"Lutheran Family (Evangelical Trad.)\",\r",
+							"\"Lutheran Church-Missouri Synod\",\r",
+							"\"Wisconsin Evangelical Lutheran Synod\",\r",
+							"\"Other Lutheran (Evangelical Trad.)\",\r",
+							"\"Presbyterian Family (Evangelical Trad.)\",\r",
+							"\"Presbyterian Church in America\",\r",
+							"\"Other Presbyterian (Evangelical Trad.)\",\r",
+							"\"Pentecostal Family (Evangelical Trad.)\",\r",
+							"\"Assemblies of God\",\r",
+							"\"Church of God (Cleveland, Tennessee)\",\r",
+							"\"Foursquare Church\",\r",
+							"\"Pentecostal Church of God\",\r",
+							"\"Pentecostal Holiness Church\",\r",
+							"\"Calvary Chapel\",\r",
+							"\"Apostolic Pentecostal (Evangelical Trad.)\",\r",
+							"\"Nondenominational Pentecostal (Evangelical Trad.)\",\r",
+							"\"Church of God of the Apostolic Faith\",\r",
+							"\"Other Pentecostal (Evangelical Trad.)\",\r",
+							"\"Episcopalian/Anglican Family (Evangelical Trad.)\",\r",
+							"\"Restorationist Family (Evangelical Trad.)\",\r",
+							"\"Churches of Christ\",\r",
+							"\"Christian Churches and Churches of Christ\",\r",
+							"\"Other Restorationist (Evangelical Trad.)\",\r",
+							"\"Congregationalist Family (Evangelical Trad.)\",\r",
+							"\"Conservative Congregational Christian Conference\",\r",
+							"\"Other Congregationalist (Evangelical Trad.)\",\r",
+							"\"Holiness Family (Evangelical Trad.)\",\r",
+							"\"Church of the Nazarene\",\r",
+							"\"Wesleyan Church\",\r",
+							"\"Free Methodist Church\",\r",
+							"\"Christian and Missionary Alliance\",\r",
+							"\"Church of God (Anderson, Indiana)\",\r",
+							"\"Other Holiness (Evangelical Trad.)\",\r",
+							"\"Reformed Family (Evangelical Trad.)\",\r",
+							"\"Christian Reformed Church\",\r",
+							"\"Other Reformed (Evangelical Trad.)\",\r",
+							"\"Adventist Family (Evangelical Trad.)\",\r",
+							"\"Seventh-day Adventist\",\r",
+							"\"Other Adventist (Evangelical Trad.)\",\r",
+							"\"Anabaptist Family (Evangelical Trad.)\",\r",
+							"\"Pietist Family (Evangelical Trad.)\",\r",
+							"\"Other evangelical/fundamentalist family (Evangelical Trad.)\",\r",
+							"\"Nonspecific Protestant Family (Evangelical Trad.)\",\r",
+							"\"Mainline Protestant\",\r",
+							"\"Baptist Family (Mainline Trad.)\",\r",
+							"\"American Baptist Churches USA\",\r",
+							"\"Other Baptist (Mainline Trad.)\",\r",
+							"\"Methodist Family (Mainline Trad.)\",\r",
+							"\"United Methodist Church\",\r",
+							"\"Other Methodist (Mainline Trad.)\",\r",
+							"\"Nondenominational Family (Mainline Trad.)\",\r",
+							"\"Interdenominational (Mainline Trad.)\",\r",
+							"\"Other Nondenominational (Mainline Trad.)\",\r",
+							"\"Lutheran Family (Mainline Trad.)\",\r",
+							"\"Evangelical Lutheran Church in America (ELCA)\",\r",
+							"\"Other Lutheran (Mainline Trad.)\",\r",
+							"\"Presbyterian Family (Mainline Trad.)\",\r",
+							"\"Presbyterian Church (USA)\",\r",
+							"\"Other Presbyterian (Mainline Trad.)\",\r",
+							"\"Episcopalian/Anglican Family (Mainline Trad.)\",\r",
+							"\"Episcopal Church\",\r",
+							"\"Anglican Church\",\r",
+							"\"Other Episcopalian/Anglican (Mainline Trad.)\",\r",
+							"\"Restorationist Family (Mainline Trad.)\",\r",
+							"\"Disciples of Christ\",\r",
+							"\"Other Restorationist (Mainline Trad.)\",\r",
+							"\"Congregationalist Family (Mainline Trad.)\",\r",
+							"\"United Church of Christ\",\r",
+							"\"Other Congregationalist (Mainline Trad.)\",\r",
+							"\"Reformed Family (Mainline Trad.)\",\r",
+							"\"Reformed Church in America\",\r",
+							"\"Other Reformed (Mainline Trad.)\",\r",
+							"\"Anabaptist Family (Mainline Trad.)\",\r",
+							"\"Friends Family (Mainline Trad.)\",\r",
+							"\"Nonspecific Protestant Family (Mainline Trad.)\",\r",
+							"\"Historically Black Protestant\",\r",
+							"\"Baptist Family (Historically Black Protestant Trad.)\",\r",
+							"\"National Baptist Convention\",\r",
+							"\"Progressive Baptist Convention\",\r",
+							"\"Independent Baptist (Historically Black Protestant Trad.)\",\r",
+							"\"Missionary Baptist (Historically Black Protestant Trad.)\",\r",
+							"\"Other Baptist (Historically Black Protestant Trad.)\",\r",
+							"\"Methodist Family (Historically Black Protestant Trad.)\",\r",
+							"\"African Methodist Episcopal Church\",\r",
+							"\"African Methodist Episcopal Zion Church\",\r",
+							"\"Christian Methodist Episcopal Church\",\r",
+							"\"Other Methodist (Historically Black Protestant Trad.)\",\r",
+							"\"Pentecostal Family (Historically Black Protestant Trad.)\",\r",
+							"\"Church of God in Christ\",\r",
+							"\"Apostolic Pentecostal (Historically Black Protestant Trad.)\",\r",
+							"\"United Pentecostal Church International\",\r",
+							"\"Other Pentecostal (Historically Black Protestant Trad.)\",\r",
+							"\"Holiness Family (Historically Black Protestant Trad.)\",\r",
+							"\"Nondenominational Family (Historically Black Protestant Trad.)\",\r",
+							"\"Nonspecific Protestant Family (Historically Black Protestant Trad.)\",\r",
+							"\"Catholic\",\r",
+							"\"Mormon\",\r",
+							"\"Church of Jesus Christ of Latter-day Saints\",\r",
+							"\"Other Mormon\",\r",
+							"\"Orthodox Christian\",\r",
+							"\"Greek Orthodox\",\r",
+							"\"Russian Orthodox\",\r",
+							"\"Orthodox Church in America\",\r",
+							"\"Other Orthodox Christian\",\r",
+							"\"Jehovah's Witness\",\r",
+							"\"Other Christian\",\r",
+							"\"Metaphysical Family\",\r",
+							"\"Spiritualist\",\r",
+							"\"Unity Church\",\r",
+							"'Other Metaphysical Christian (\"Other Christian\" Trad.)',\r",
+							"'Others in the \"Other Christian\" Tradition',\r",
+							"\"Non-Christian Faiths\",\r",
+							"\"Jewish\",\r",
+							"\"Muslim\",\r",
+							"\"Buddhist\",\r",
+							"\"Hindu\",\r",
+							"\"Other World Religions\",\r",
+							"\"Other Faiths\",\r",
+							"'Unitarians and other liberal faiths in the \"Other Faiths\" Tradition',\r",
+							"\"Unitarian\",\r",
+							"\"Humanist\",\r",
+							"\"Deist\",\r",
+							"\"Spiritual but not religious\",\r",
+							"'Eclectic, a bit of everything, \"I have my own beliefs',\r",
+							"'Other in the \"Unitarian and other liberal faiths\" family',\r",
+							"\"New Age\",\r",
+							"\"Pagan or Wiccan\",\r",
+							"\"Other in the New Age family\",\r",
+							"\"Native American Religions\",\r",
+							"'Unaffiliated (religious \"nones\")',\r",
+							"\"Atheist\",\r",
+							"\"Agnostic\",\r",
+							"\"Nothing in particular\",\r",
+							"\"Nothing in particular (religion not important)\",\r",
+							"\"Nothing in particular (religion important)\",\r",
+							"\"Don't know\"\r",
+							"]\r",
+							"\r",
+							"let denominationsUpdate = denomination[Math.floor(Math.random() * denomination.length)];\r",
+							"console.log(\"denominationsUpdate - \" +denominationsUpdate);\r",
+							"pm.environment.set(\"denominationsUpdate\", denominationsUpdate);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"organization\": {\r\n        \"orgEUID\": \"{{accountId}}\",\r\n        \"name\": \"{{OrgName}}_updated\",\r\n        \"address\": {\r\n            \"line1\": \"{{randomStreetAddress}}\",\r\n            \"line2\": \"{{randomStreetName}}\",\r\n            \"city\": \"{{City}}\",\r\n            \"state\": \"{{stateIsoCode}}\",\r\n            \"postal_code\":\"{{postal_code}}\",\r\n            \"country\": \"US\"\r\n        },\r\n        \"totalWeeklyAttendance\": 100\r\n        \r\n    },\r\n    \"user\": {\r\n        \"euid\": \"{{contactId}}\",\r\n        \"amplifyUUID\": \"{{UseramplifyUUID}}\",\r\n        \"firstName\": \"{{randomFirstName}}\",\r\n        \"lastName\": \"{{randomLastName}}\",\r\n        \"email\": \"{{randomEmail}}\",\r\n        \"phone\": \"{{randomPhoneNumber}}\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/customers",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"customers"
+					],
+					"query": [
+						{
+							"key": "accountId",
+							"value": "{{accountId}}",
+							"disabled": true
+						},
+						{
+							"key": "contactId",
+							"value": "{{contactId}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customers after update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"To Check expected org name\", function() \r",
+							"{\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.expect(jsonData.organization.name).not.eql('{{accountId}}_Updated'); \r",
+							"})\r",
+							"\r",
+							"\r",
+							"pm.test(\"get New customer is created 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BaseURL}}/customers?orgEUID={{accountId}}&contactEUID={{contactId}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"customers"
+					],
+					"query": [
+						{
+							"key": "orgEUID",
+							"value": "{{accountId}}"
+						},
+						{
+							"key": "contactEUID",
+							"value": "{{contactId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Quotes",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"let  i=Math.floor((Math.random() * 32) + 1);\r",
+							"let  k=Math.floor((Math.random() * 32) + 2);\r",
+							"\r",
+							"let Prod_ContTer_BillFre = [\r",
+							"    \r",
+							"    //Amplify Core Bundle\r",
+							"    \r",
+							"    ['01t7b000003xrP5AAI', '36 Months','Annual','Amplify Core Bundle'],\r",
+							"    ['01t7b000003xrP5AAI', '36 Months','Monthly','Amplify Core Bundle'],  \r",
+							"    ['01t7b000003xrP5AAI', '12 Months','Annual','Amplify Core Bundle'],\r",
+							"    ['01t7b000003xrP5AAI', '12 Months','Monthly','Amplify Core Bundle'],\r",
+							"    ['01t7b000003xrP5AAI', 'Monthly','Monthly','Amplify Core Bundle'],\r",
+							"\r",
+							"    //Amplify ChMS Build Your Own\r",
+							"    ['01t7b000003xrP7AAI', '36 Months','Annual','Amplify ChMS Build Your Own'],\r",
+							"    ['01t7b000003xrP7AAI', '36 Months','Monthly','Amplify ChMS Build Your Own'],\r",
+							"    ['01t7b000003xrP7AAI', '12 Months','Annual','Amplify ChMS Build Your Own'],\r",
+							"    ['01t7b000003xrP7AAI', '12 Months','Monthly','Amplify ChMS Build Your Own'],\r",
+							"    ['01t7b000003xrP7AAI', 'Monthly','Monthly','Amplify ChMS Build Your Own'],\r",
+							"    \r",
+							"    //Amplify Giving Build Your Own\r",
+							"    ['01t7b000003xrP9AAI', '36 Months','Monthly','Amplify Giving Build Your Own'],\r",
+							"    ['01t7b000003xrP9AAI', '36 Months','Annual','Amplify Giving Build Your Own'],\r",
+							"    ['01t7b000003xrP9AAI', '12 Months','Annual','Amplify Giving Build Your Own'],\r",
+							"    ['01t7b000003xrP9AAI', '12 Months','Monthly','Amplify Giving Build Your Own'],\r",
+							"    ['01t7b000003xrP9AAI', 'Monthly','Monthly','Amplify Giving Build Your Own'],\r",
+							"\r",
+							"    //Amplify Mobile App Build Your Own\r",
+							"    ['01t7b000003xrPBAAY', '36 Months','Monthly','Amplify Mobile App Build Your Own'],\r",
+							"    ['01t7b000003xrPBAAY', '36 Months','Annual','Amplify Mobile App Build Your Own'],\r",
+							"    ['01t7b000003xrPBAAY', '12 Months','Annual','Amplify Mobile App Build Your Own'],\r",
+							"    ['01t7b000003xrPBAAY', '12 Months','Monthly','Amplify Mobile App Build Your Own'],\r",
+							"    ['01t7b000003xrPBAAY', 'Monthly','Monthly','Amplify Mobile App Build Your Own'],\r",
+							"\r",
+							"    //Amplify Website App Build Your Own\r",
+							"    ['01t7b000003xrPDAAY', '36 Months','Monthly','Amplify Website App Build Your Own'],\r",
+							"    ['01t7b000003xrPDAAY', '36 Months','Annual','Amplify Website App Build Your Own'],\r",
+							"    ['01t7b000003xrPDAAY', '12 Months','Annual','Amplify Website App Build Your Own'],\r",
+							"    ['01t7b000003xrPDAAY', '12 Months','Monthly','Amplify Website App Build Your Own'],\r",
+							"    ['01t7b000003xrPDAAY', 'Monthly','Monthly','Amplify Website App Build Your Own'],\r",
+							"\r",
+							"    //Amplify Streaming App Build Your Own\r",
+							"    ['01t7b000003xrPFAAY', '36 Months','Monthly','Amplify Streaming App Build Your Own'],\r",
+							"    ['01t7b000003xrPFAAY', '36 Months','Annual','Amplify Streaming App Build Your Own'],\r",
+							"    ['01t7b000003xrPFAAY', '12 Months','Annual','Amplify Streaming App Build Your Own'],\r",
+							"    ['01t7b000003xrPFAAY', '12 Months','Monthly','Amplify Streaming App Build Your Own'],\r",
+							"    ['01t7b000003xrPFAAY', 'Monthly','Monthly','Amplify Streaming App Build Your Own'],\r",
+							"\r",
+							"    \r",
+							"];\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.environment.set(\"productId\", Prod_ContTer_BillFre[i][0]);\r",
+							"pm.environment.set(\"productId2\", Prod_ContTer_BillFre[k][0]);\r",
+							"pm.environment.set(\"contractTerm\", Prod_ContTer_BillFre[i][1]);\r",
+							"pm.environment.set(\"billingFrequency\", Prod_ContTer_BillFre[i][2]);\r",
+							"pm.environment.set(\"productName\", Prod_ContTer_BillFre[i][3]);\r",
+							"\r",
+							"console.log(\"productId 1\",Prod_ContTer_BillFre[i][0]);\r",
+							"console.log(\"productId 2 \",Prod_ContTer_BillFre[k][0]);\r",
+							"console.log(\"contractTerm \",Prod_ContTer_BillFre[i][1]);\r",
+							"console.log(\"billingFrequency \",Prod_ContTer_BillFre[i][2]);\r",
+							"console.log(\"productName \",Prod_ContTer_BillFre[i][3]);\r",
+							"\r",
+							"//future date\r",
+							"\r",
+							"var moment = require('moment');\r",
+							"var targetDate = new Date();\r",
+							"targetDate.setDate(targetDate.getDate() + 3);\r",
+							"\r",
+							"// So you can see the date we have created\r",
+							"\r",
+							"\r",
+							"var dd = targetDate.getDate();\r",
+							"var mm = targetDate.getMonth() + 1; // 0 is January, so we must add 1\r",
+							"var yyyy = targetDate.getFullYear();\r",
+							"\r",
+							"var enddate = yyyy + \"-\" + mm + \"-\" + dd\r",
+							"\r",
+							"\r",
+							"var startdate=(moment().format((\"YYYY-MM-DD\")));\r",
+							"console.log(\"startdate \"+startdate);\r",
+							"console.log(\"enddate \"+enddate);\r",
+							"pm.environment.set(\"startdate\", startdate);\r",
+							"pm.environment.set(\"enddate\", enddate);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"\r",
+							"pm.environment.set(\"new_quoteId\", jsonData.quoteId);\r",
+							"//pm.environment.set(\"new_opportunityId\", jsonData.opportunityId);\r",
+							"pm.environment.set(\"new_opportunityEUID\", jsonData.opportunityEUID);\r",
+							"pm.environment.set(\"new_opportunityName\", jsonData.opportunityName);\r",
+							"\r",
+							"pm.test(\"New quote for New customer is created 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"console.log(\"new_quoteId\", jsonData.quoteId);\r",
+							"//console.log(\"new_opportunityId\", jsonData.opportunityId);\r",
+							"console.log(\"new_opportunityEUID\", jsonData.opportunityEUID);\r",
+							"console.log(\"new_opportunityName\", jsonData.opportunityName);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orgEUID\": \"{{accountId}}\",\r\n    \"contactEUID\": \"{{contactId}}\",\r\n    \"currencyIsoCode\": \"USD\",\r\n    \"startDate\": \"{{startdate}}\",\r\n    \"contractTerm\": \"{{contractTerm}}\",\r\n    \"billingFrequency\": \"{{billingFrequency}}\",\r\n    \"modules\": [\r\n        {\r\n            \"productId\": \"{{productId}}\",\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"productId\": \"01t7b000003xrPDAAY\",\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/quotes",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"quotes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getproduct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get product 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "X-API-KEY",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://uat-api.ministrybrands.com/amplify-checkout-exp-api-test/api/products?productId={{productId}}",
+					"protocol": "https",
+					"host": [
+						"uat-api",
+						"ministrybrands",
+						"com"
+					],
+					"path": [
+						"amplify-checkout-exp-api-test",
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "{{productId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get quotes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"get quote for New customer is created 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orgId\": \"0017800000GM5uWAAT\",\r\n    \"contactId\": \"0037800000DCoO0AAL\",\r\n    \"organization\": {\r\n        \"name\": \"TestOrganization\",\r\n        \"amplify_uuid\": \"39245923-325234-2354-234\",\r\n        \"address\": {\r\n            \"line_1\": \"123 Main Street\",\r\n            \"line_2\": \"Building 2c\",\r\n            \"city\": \"New York\",\r\n            \"state\": \"New York\",\r\n            \"stateIsoCode\": \"NY\",\r\n\t\t\t\"country\": \"United States\",\r\n            \"countryIsoCode\": \"US\",\r\n            \"postal_code\": \"37919\"\r\n        },\r\n        \"total_weekly_attendance\": 500,\r\n        \"denomination\": \"Baptist\"\r\n    },\r\n    \"user\": {\r\n        \"amplify_uuid\": \"394935-239325-4395345-3453\",\r\n        \"first_name\": \"John\",\r\n        \"last_name\": \"Doe\",\r\n        \"email\": \"john@doe.com\",\r\n        \"phone\": \"+1 (865) 555-1212\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/quotes/{{new_quoteId}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"quotes",
+						"{{new_quoteId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Quote",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"get quote for New customer is created 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currencyIsoCode\": \"USD\",\r\n    \"modules\": [\r\n        {\r\n            \"productId\": \"{{productId}}\",\r\n            \"quantity\": 1\r\n          \r\n        },\r\n         {\r\n            \"productId\": \"{{productId2}}\",\r\n            \"quantity\": 1\r\n          \r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/quotes/{{new_quoteId}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"quotes",
+						"{{new_quoteId}}"
+					],
+					"query": [
+						{
+							"key": "accountId",
+							"value": "akhd123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get quotes after Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"get new quote for New customer is updated 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "X-API-KEY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/quotes/{{new_quoteId}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"quotes",
+						"{{new_quoteId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get opportunity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get Opportunity 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"check opportunities\", function () {\r",
+							"   var jsonData = pm.response.json();\r",
+							"   pm.expect(jsonData).have.property('stage', 'Closed Won');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){}, 80500);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "X-API-KEY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/opportunities/{{new_opportunityEUID}}?includeQuotes=true",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"opportunities",
+						"{{new_opportunityEUID}}"
+					],
+					"query": [
+						{
+							"key": "includeQuotes",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create quote Bundle product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"\r",
+							"pm.environment.set(\"Bundle_quoteId\", jsonData.quoteId);\r",
+							"//pm.environment.set(\"Bundle_opportunityId\", jsonData.opportunityId);\r",
+							"pm.environment.set(\"Bundle_opportunityEUID\", jsonData.opportunityEUID);\r",
+							"pm.environment.set(\"Bundle_opportunityName\", jsonData.opportunityName);\r",
+							"\r",
+							"pm.test(\"New quote for New customer is created 201 for bundle\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"console.log(\"Bundle_quoteId\", jsonData.quoteId);\r",
+							"//console.log(\"new_opportunityId\", jsonData.opportunityId);\r",
+							"console.log(\"Bundle_opportunityEUID\", jsonData.opportunityEUID);\r",
+							"console.log(\"Bundle_opportunityName\", jsonData.opportunityName);\r",
+							"\r",
+							"\r",
+							"/*\r",
+							"{\r",
+							"    \"orgEUID\": \"{{accountId}}\",\r",
+							"    \"contactEUID\": \"{{contactId}}\",\r",
+							"    \"currencyIsoCode\": \"USD\",\r",
+							"    \"startDate\": \"{{startdate}}\",\r",
+							"    \"contractTerm\": \"{{contractTerm}}\",\r",
+							"    \"billingFrequency\": \"{{billingFrequency}}\",\r",
+							"    \"modules\":  [\r",
+							"        {\r",
+							"            \"productId\": \"01t7b000003xrP5AAI\",\r",
+							"            \"quantity\": 1,\r",
+							"            \"productCategory\": \"Bundle\"\r",
+							"        },\r",
+							"        {\r",
+							"            \"productId\": \"01t7b000003xrP7AAI\",\r",
+							"            \"optionId\": \"a0i7b000003BNWqAAO\",\r",
+							"            \"isRequiredOption\" : true,\r",
+							"            \"productCategory\": \"Bundle\",\r",
+							"            \"parentProductId\": \"01t7b000003xrP5AAI\"\r",
+							"        },\r",
+							"        {\r",
+							"            \"productId\": \"01t7b000003xrPBAAY\",\r",
+							"            \"optionId\": \"a0i7b000003BNWvAAO\",\r",
+							"            \"productCategory\": \"Bundle\",\r",
+							"            \"isRequiredOption\": true,\r",
+							"            \"parentProductId\": \"01t7b000003xrP5AAI\"\r",
+							"        },\r",
+							"        \r",
+							"        {\r",
+							"            \"productId\": \"01t7b000003xrPGAAY\",\r",
+							"            \"optionId\": \"a0i7b000003BNXjAAO\",\r",
+							"            \"isRequiredOption\": true,\r",
+							"            \"parentProductId\": \"01t7b000003xrP7AAI\"\r",
+							"        },\r",
+							"        {\r",
+							"            \"productId\": \"01t7b000003xrPHAAY\",\r",
+							"            \"optionId\": \"a0i7b000003BNXtAAO\",\r",
+							"            \"isRequiredOption\": true,\r",
+							"            \"parentProductId\": \"01t7b000003xrPBAAY\"\r",
+							"        }\r",
+							"    ]\r",
+							"\r",
+							"}\r",
+							"*/\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){}, 20500);\r",
+							"\r",
+							"let  i=Math.floor((Math.random() * 32) + 1);\r",
+							"\r",
+							"let Prod_ContTer_BillFre = [\r",
+							"    \r",
+							"    //Amplify Core Bundle\r",
+							"    \r",
+							"    ['01t7b000003xrP5AAI', '36 Months','Annual','Amplify Core Bundle'],\r",
+							"    ['01t7b000003xrP5AAI', '36 Months','Monthly','Amplify Core Bundle'],  \r",
+							"    ['01t7b000003xrP5AAI', '12 Months','Annual','Amplify Core Bundle'],\r",
+							"    ['01t7b000003xrP5AAI', '12 Months','Monthly','Amplify Core Bundle'],\r",
+							"    ['01t7b000003xrP5AAI', 'Monthly','Monthly','Amplify Core Bundle'],\r",
+							"\r",
+							"    //Amplify ChMS Build Your Own\r",
+							"    ['01t7b000003xrP7AAI', '36 Months','Annual','Amplify ChMS Build Your Own'],\r",
+							"    ['01t7b000003xrP7AAI', '36 Months','Monthly','Amplify ChMS Build Your Own'],\r",
+							"    ['01t7b000003xrP7AAI', '12 Months','Annual','Amplify ChMS Build Your Own'],\r",
+							"    ['01t7b000003xrP7AAI', '12 Months','Monthly','Amplify ChMS Build Your Own'],\r",
+							"    ['01t7b000003xrP7AAI', 'Monthly','Monthly','Amplify ChMS Build Your Own'],\r",
+							"    \r",
+							"    //Amplify Giving Build Your Own\r",
+							"    ['01t7b000003xrP9AAI', '36 Months','Monthly','Amplify Giving Build Your Own'],\r",
+							"    ['01t7b000003xrP9AAI', '36 Months','Annual','Amplify Giving Build Your Own'],\r",
+							"    ['01t7b000003xrP9AAI', '12 Months','Annual','Amplify Giving Build Your Own'],\r",
+							"    ['01t7b000003xrP9AAI', '12 Months','Monthly','Amplify Giving Build Your Own'],\r",
+							"    ['01t7b000003xrP9AAI', 'Monthly','Monthly','Amplify Giving Build Your Own'],\r",
+							"\r",
+							"    //Amplify Mobile App Build Your Own\r",
+							"    ['01t7b000003xrPBAAY', '36 Months','Monthly','Amplify Mobile App Build Your Own'],\r",
+							"    ['01t7b000003xrPBAAY', '36 Months','Annual','Amplify Mobile App Build Your Own'],\r",
+							"    ['01t7b000003xrPBAAY', '12 Months','Annual','Amplify Mobile App Build Your Own'],\r",
+							"    ['01t7b000003xrPBAAY', '12 Months','Monthly','Amplify Mobile App Build Your Own'],\r",
+							"    ['01t7b000003xrPBAAY', 'Monthly','Monthly','Amplify Mobile App Build Your Own'],\r",
+							"\r",
+							"    //Amplify Website App Build Your Own\r",
+							"    ['01t7b000003xrPDAAY', '36 Months','Monthly','Amplify Website App Build Your Own'],\r",
+							"    ['01t7b000003xrPDAAY', '36 Months','Annual','Amplify Website App Build Your Own'],\r",
+							"    ['01t7b000003xrPDAAY', '12 Months','Annual','Amplify Website App Build Your Own'],\r",
+							"    ['01t7b000003xrPDAAY', '12 Months','Monthly','Amplify Website App Build Your Own'],\r",
+							"    ['01t7b000003xrPDAAY', 'Monthly','Monthly','Amplify Website App Build Your Own'],\r",
+							"\r",
+							"    //Amplify Streaming App Build Your Own\r",
+							"    ['01t7b000003xrPFAAY', '36 Months','Monthly','Amplify Streaming App Build Your Own'],\r",
+							"    ['01t7b000003xrPFAAY', '36 Months','Annual','Amplify Streaming App Build Your Own'],\r",
+							"    ['01t7b000003xrPFAAY', '12 Months','Annual','Amplify Streaming App Build Your Own'],\r",
+							"    ['01t7b000003xrPFAAY', '12 Months','Monthly','Amplify Streaming App Build Your Own'],\r",
+							"    ['01t7b000003xrPFAAY', 'Monthly','Monthly','Amplify Streaming App Build Your Own'],\r",
+							"\r",
+							"    \r",
+							"];\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.environment.set(\"productId\", Prod_ContTer_BillFre[i][0]);\r",
+							"pm.environment.set(\"contractTerm\", Prod_ContTer_BillFre[i][1]);\r",
+							"pm.environment.set(\"billingFrequency\", Prod_ContTer_BillFre[i][2]);\r",
+							"pm.environment.set(\"productName\", Prod_ContTer_BillFre[i][3]);\r",
+							"\r",
+							"console.log(\"productId \",Prod_ContTer_BillFre[i][0]);\r",
+							"console.log(\"contractTerm \",Prod_ContTer_BillFre[i][1]);\r",
+							"console.log(\"billingFrequency \",Prod_ContTer_BillFre[i][2]);\r",
+							"console.log(\"productName \",Prod_ContTer_BillFre[i][3]);\r",
+							"\r",
+							"\r",
+							"//future date\r",
+							"\r",
+							"var moment = require('moment');\r",
+							"var targetDate = new Date();\r",
+							"targetDate.setDate(targetDate.getDate() + 3);\r",
+							"\r",
+							"// So you can see the date we have created\r",
+							"\r",
+							"\r",
+							"var dd = targetDate.getDate();\r",
+							"var mm = targetDate.getMonth() + 1; // 0 is January, so we must add 1\r",
+							"var yyyy = targetDate.getFullYear();\r",
+							"\r",
+							"var enddate = yyyy + \"-\" + mm + \"-\" + dd\r",
+							"\r",
+							"\r",
+							"var startdate=(moment().format((\"YYYY-MM-DD\")));\r",
+							"console.log(\"startdate \"+startdate);\r",
+							"console.log(\"enddate \"+enddate);\r",
+							"pm.environment.set(\"startdate\", startdate);\r",
+							"pm.environment.set(\"enddate\", enddate);\r",
+							"\r",
+							"\r",
+							"pm.variables.set(\"AmplifyCoreBundle\", +\r",
+							" {\r",
+							"            \"productId\": \"01t7b000003xrP5AAI\",\r",
+							"            \"quantity\": 1,\r",
+							"            \"productCategory\": \"Bundle\"\r",
+							"        },\r",
+							"        {\r",
+							"            \"productId\": \"01t7b000003xrP7AAI\",\r",
+							"            \"optionId\": \"a0i7b000003BNWqAAO\",\r",
+							"            \"isRequiredOption\" : true,\r",
+							"            \"productCategory\": \"Bundle\",\r",
+							"            \"parentProductId\": \"01t7b000003xrP5AAI\"\r",
+							"        },\r",
+							"        {\r",
+							"            \"productId\": \"01t7b000003xrPBAAY\",\r",
+							"            \"optionId\": \"a0i7b000003BNWvAAO\",\r",
+							"            \"productCategory\": \"Bundle\",\r",
+							"            \"isRequiredOption\": true,\r",
+							"            \"parentProductId\": \"01t7b000003xrP5AAI\"\r",
+							"        },\r",
+							"        \r",
+							"        {\r",
+							"            \"productId\": \"01t7b000003xrPGAAY\",\r",
+							"            \"optionId\": \"a0i7b000003BNXjAAO\",\r",
+							"            \"isRequiredOption\": true,\r",
+							"            \"parentProductId\": \"01t7b000003xrP7AAI\"\r",
+							"        },\r",
+							"        {\r",
+							"            \"productId\": \"01t7b000003xrPHAAY\",\r",
+							"            \"optionId\": \"a0i7b000003BNXtAAO\",\r",
+							"            \"isRequiredOption\": true,\r",
+							"            \"parentProductId\": \"01t7b000003xrPBAAY\"\r",
+							"        }\r",
+							"        )\r",
+							"\r",
+							"\r",
+							"pm.variables.set(\"AmplifyFoundationBundle\", +\r",
+							"  {\r",
+							"            \"productId\": \"01t7b00000563xhAAA\",\r",
+							"            \"quantity\": 1\r",
+							"            \r",
+							"        },\r",
+							"        {\r",
+							"            \"productId\": \"01t7b000003xrP7AAI\",\r",
+							"            \"optionId\": \"a0i7b000003eitXAAQ\",\r",
+							"            \"isRequiredOption\" : true,\r",
+							"            \"productCategory\": \"Bundle\",\r",
+							"            \"parentProductId\": \"01t7b00000563xhAAA\"\r",
+							"        },\r",
+							"        {\r",
+							"            \"productId\": \"01t7b000003xrPBAAY\",\r",
+							"            \"optionId\": \"a0i7b000003BNWvAAO\",\r",
+							"            \"productCategory\": \"Bundle\",\r",
+							"            \"isRequiredOption\": true,\r",
+							"            \"parentProductId\": \"01t7b00000563xhAAA\"\r",
+							"        }\r",
+							")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "X-API-KEY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orgEUID\": \"{{accountId}}\",\r\n    \"contactEUID\": \"{{contactId}}\",\r\n    \"currencyIsoCode\": \"USD\",\r\n    \"startDate\": \"{{startdate}}\",\r\n    \"contractTerm\": \"{{contractTerm}}\",\r\n    \"billingFrequency\": \"{{billingFrequency}}\",\r\n    \"modules\": [\r\n       {\r\n            \"productId\": \"01t7b000003xrP5AAI\",\r\n            \"quantity\": 1,\r\n            \"productCategory\": \"Bundle\"\r\n        },\r\n        {\r\n            \"productId\": \"01t7b000003xrP7AAI\",\r\n            \"optionId\": \"a0i7b000003BNWqAAO\",\r\n            \"isRequiredOption\" : true,\r\n            \"productCategory\": \"Bundle\",\r\n            \"parentProductId\": \"01t7b000003xrP5AAI\"\r\n        },\r\n        {\r\n            \"productId\": \"01t7b000003xrPBAAY\",\r\n            \"optionId\": \"a0i7b000003BNWvAAO\",\r\n            \"productCategory\": \"Bundle\",\r\n            \"isRequiredOption\": true,\r\n            \"parentProductId\": \"01t7b000003xrP5AAI\"\r\n        },\r\n        \r\n        {\r\n            \"productId\": \"01t7b000003xrPGAAY\",\r\n            \"optionId\": \"a0i7b000003BNXjAAO\",\r\n            \"isRequiredOption\": true,\r\n            \"parentProductId\": \"01t7b000003xrP7AAI\"\r\n        },\r\n        {\r\n            \"productId\": \"01t7b000003xrPHAAY\",\r\n            \"optionId\": \"a0i7b000003BNXtAAO\",\r\n            \"isRequiredOption\": true,\r\n            \"parentProductId\": \"01t7b000003xrPBAAY\"\r\n        }\r\n\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://uat-api.ministrybrands.com/amplify-checkout-exp-api-test/api/quotes",
+					"protocol": "https",
+					"host": [
+						"uat-api",
+						"ministrybrands",
+						"com"
+					],
+					"path": [
+						"amplify-checkout-exp-api-test",
+						"api",
+						"quotes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get opportunity Bundle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"setTimeout(function(){}, 60500);\r",
+							"\r",
+							"pm.test(\"Get Opportunity Bundle 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"check opportunities\", function () {\r",
+							"   var jsonData = pm.response.json();\r",
+							"   pm.expect(jsonData).have.property('stage', 'Closed Won');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){}, 80500);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "X-API-KEY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/opportunities/{{Bundle_opportunityEUID}}?includeQuotes=true",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"opportunities",
+						"{{Bundle_opportunityEUID}}"
+					],
+					"query": [
+						{
+							"key": "includeQuotes",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getQuotes Bundle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"\r",
+							"\r",
+							"pm.environment.set(\"Bundle_productId\", jsonData.modules[0].productId);\r",
+							"console.log(\"Bundle_productId \", jsonData.modules[0].productId);\r",
+							"\r",
+							"pm.test(\"Get Quote bundle 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "X-API-KEY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/quotes/{{Bundle_quoteId}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"quotes",
+						"{{Bundle_quoteId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getproduct bundle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get Product Bundle 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "X-API-KEY",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "a1c881133efe44a991edd9be3d8fea24:30F190f3D4D643a2a6B40aB72E3CCEA8",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{AccessToken}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BaseURL}}/products?productId={{Bundle_productId}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "{{Bundle_productId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseURL",
+			"value": "https://uat-api.ministrybrands.com/amplify-checkout-exp-api-test/api/",
+			"type": "string"
+		}
+	]
+}
