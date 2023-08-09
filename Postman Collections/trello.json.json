@@ -17,9 +17,7 @@
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test('Status code is 200', () => {",
-							"    pm.response.to.have.status(200);",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -585,37 +583,37 @@
 	],
 	"variable": [
 		{
-			"id": "c4470b0c-8a5c-4eeb-b028-1ebace5ef614",
+			"id": "38d24d15-9c66-4d32-8099-209d6350e40c",
 			"key": "baseUrl",
 			"value": "https://api.trello.com"
 		},
 		{
-			"id": "ade53213-0174-4eb2-bf3b-f39325f51841",
+			"id": "041f98ed-ccf0-47d7-b4bc-a4722736ddd1",
 			"key": "trelloKey",
 			"value": "b0e4f12b7873140b9c4af52e7ed7f09e"
 		},
 		{
-			"id": "69ec4a65-e0f3-4d3d-ad5b-dd1cec74f9c5",
+			"id": "5fdc0854-3195-4b77-9bca-0f2c1e189b19",
 			"key": "trelloToken",
 			"value": "ATTAa831ca2dd6b665d86640b40e267690114bc4a87c3e750cdee8dd01f53d414186D8DA1F72"
 		},
 		{
-			"id": "58383b2e-80a9-4954-8578-d85c34a07947",
+			"id": "57823b38-b5ad-4ceb-9661-b6f74cde4a4c",
 			"key": "boardId",
 			"value": ""
 		},
 		{
-			"id": "57d8d10e-7695-4de8-8cd4-a8b59b759ddd",
+			"id": "e207f302-40ed-408a-b7a2-8146988a879d",
 			"key": "todoListId",
 			"value": ""
 		},
 		{
-			"id": "48204b11-5d36-4ffd-96ce-3fb3050d51d7",
+			"id": "6da24075-27db-42b5-8582-543fda94c0c9",
 			"key": "doneListId",
 			"value": ""
 		},
 		{
-			"id": "920c1929-e76a-4419-9a7e-68aff94870af",
+			"id": "e9a453ae-e7c9-4dc2-bc55-380b5653d586",
 			"key": "cardId",
 			"value": ""
 		}
