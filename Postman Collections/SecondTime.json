@@ -15,6 +15,7 @@
 						"id": "4f56949b-8899-4eea-ae36-6f4d3ab4e74b",
 						"exec": [
 							"//setTimeout(function(){}, 10500);",
+							"//setTimeout(function(){}, 10500);",
 							"",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -39,7 +40,7 @@
 					}
 				}
 			],
-			"_postman_id": "5551fe6d-3f8e-402f-a24e-c441ff4700e4",
+			"id": "5551fe6d-3f8e-402f-a24e-c441ff4700e4",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -97,7 +98,7 @@
 					}
 				}
 			],
-			"_postman_id": "0afbc843-a80b-4ee9-bc53-2e27f908e413",
+			"id": "0afbc843-a80b-4ee9-bc53-2e27f908e413",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -111,8 +112,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"something\": \"cool\"\n}",
-					"options": {}
+					"raw": "{\n    \"something\": \"cool\"\n}"
 				},
 				"url": "http://httpbin.org/post"
 			},
@@ -134,7 +134,7 @@
 					}
 				}
 			],
-			"_postman_id": "93e39410-25b4-40a0-a310-35bb38d64dda",
+			"id": "93e39410-25b4-40a0-a310-35bb38d64dda",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -143,8 +143,7 @@
 				"header": [],
 				"body": {
 					"mode": "formdata",
-					"formdata": [],
-					"options": {}
+					"formdata": []
 				},
 				"url": "http://httpbin.org/delete"
 			},
@@ -171,7 +170,7 @@
 					}
 				}
 			],
-			"_postman_id": "2993c8f7-4c1c-4a4e-803b-543557547c7c",
+			"id": "2993c8f7-4c1c-4a4e-803b-543557547c7c",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -186,8 +185,7 @@
 							"value": "223",
 							"type": "text"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": "http://httpbin.org/put"
 			},
@@ -218,7 +216,7 @@
 	],
 	"variable": [
 		{
-			"id": "14e45f34-760b-404a-8a1c-ffa7c93d5351",
+			"id": "19298f14-319f-40e2-9727-9cecbce466b6",
 			"key": "url",
 			"value": "http://httpbin.org",
 			"type": "string"
