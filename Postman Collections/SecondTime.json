@@ -21,7 +21,7 @@
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test(\"Response contains params\", function () {",
+							"pm.test(\"Response contains params1\", function () {",
 							"    let data = pm.response.json();",
 							"    pm.expect(data.args.lol).to.eql(\"true\");",
 							"});"
@@ -216,7 +216,7 @@
 	],
 	"variable": [
 		{
-			"id": "19298f14-319f-40e2-9727-9cecbce466b6",
+			"id": "ffb91fbf-82d9-493d-98d9-b44ffe6106e6",
 			"key": "url",
 			"value": "http://httpbin.org",
 			"type": "string"
